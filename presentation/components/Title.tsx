@@ -2,7 +2,7 @@ import { View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { ThemedText } from '@/components/ThemedText';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useThemeColor } from '../hooks/useThemeColor';
+import { useThemeColor } from '../hooks/theme/useThemeColor';
 
 interface Props {
   title?: string;

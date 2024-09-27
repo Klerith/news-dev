@@ -1,9 +1,10 @@
-import { useThemeColor } from '@/presentation/hooks/useThemeColor';
+import { useThemeColor } from '@/presentation/hooks/theme/useThemeColor';
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
 
 export default function TabLayout() {
   const primaryColor = useThemeColor({}, 'primary');
+  const backgroundColor = useThemeColor({}, 'background');
 
   return (
     <Tabs
@@ -11,6 +12,10 @@ export default function TabLayout() {
         tabBarActiveTintColor: primaryColor,
         headerShown: false,
         headerShadowVisible: false,
+        tabBarStyle: {
+          backgroundColor: backgroundColor,
+          borderTopColor: backgroundColor,
+        },
       }}
     >
       <Tabs.Screen
