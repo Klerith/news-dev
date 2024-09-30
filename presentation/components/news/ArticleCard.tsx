@@ -1,6 +1,7 @@
 import { ThemedText } from '@/components/ThemedText';
 import { LocaleStrings } from '@/helpers/locale-strings';
 import { Article } from '@/infrastructure/interfaces/top-headlines.response';
+import { openBrowserAsync } from 'expo-web-browser';
 import {
   View,
   Text,
@@ -8,6 +9,7 @@ import {
   useWindowDimensions,
   Pressable,
   Linking,
+  Platform,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -32,8 +34,13 @@ const ArticleCard = ({ article, half = true }: Props) => {
     >
       {article.urlToImage && (
         <TouchableOpacity
-          onPress={() => {
-            Linking.openURL(article.url);
+          onPress={async () => {
+            // Linking.openURL(article.url);
+
+            if (Platform.OS !== 'web') {
+              // Open the link in an in-app browser.
+              await openBrowserAsync(article.url);
+            }
           }}
         >
           <Image
